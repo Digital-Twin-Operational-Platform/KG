@@ -41,8 +41,6 @@ from petsc4py import PETSc
 
 import time
 
-print("hahahahahahaha")
-time.sleep(20)
 
 def FEM_output():
     # Specify the path to your .xdmf mesh file

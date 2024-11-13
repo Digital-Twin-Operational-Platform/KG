@@ -42,13 +42,21 @@ services:
       - "7688:7687"
     environment:
        NEO4J_AUTH: neo4j/12345678
+       NEO4JLABS_PLUGINS: '["apoc"]'
+       NEO4J_dbms_security_procedures_unrestricted: apoc.*,apoc.meta.data
+       NEO4J_apoc_meta_unsafe: true
     networks:
       mynetwork:
     volumes:
       - $HOME/neo4j/data:/data
-    #   - neo4j_logs:/logs
-    #   - neo4j_import:/var/lib/neo4j/import
-    #   - neo4j_plugins:/plugins
+      #- $HOME/neo4j/logs:/logs
+      #- $HOME/neo4j/import:/import
+      #- $HOME/neo4j/plugins:/plugins
+      #- ./digitaltwin/library/fenicsx/shared:/root/shared
+      #- $HOME/neo4
+      # - neo4j_logs:/logs
+      # - neo4j_import:/var/lib/neo4j/import
+      # - neo4j_plugins:/plugins
     #command: gunicorn --bind 0.0.0.0:5000 "digitaltwin:create_app()"
     #restart: unless-stopped
   # blender:
@@ -80,7 +88,7 @@ services:
       mynetwork:
     depends_on:
       - web
-    command: /bin/sh -c "sleep 60 && python3 /root/shared/three_floor_FEM_ModalAnalysis.py"
+    command: /bin/sh -c "sleep 90 && python3 /root/shared/three_floor_FEM_ModalAnalysis.py"
     restart: no # unless-stopped
   
 

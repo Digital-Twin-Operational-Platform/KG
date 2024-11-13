@@ -77,7 +77,7 @@ lambda_ = E*nu/(1+nu)/(1-2*nu)
 domain = mesh_
 # V = fem.VectorFunctionSpace(domain, ("Lagrange", 1))
 #V = fem.functionspace(domain, ("CG", 2))
-V = fem.functionspace(domain, ("Lagrange", 1, (mesh_.geometry.dim,)))
+V = fem.functionspace(domain, ("Lagrange", 2, (mesh_.geometry.dim,)))
 #####################################################################
 #   Variational formulation
 # Strain function
@@ -156,10 +156,26 @@ eps.solve()
 num_eigenvalues = eps.getConverged()
 print(f"Number of converged eigenvalues: {num_eigenvalues}")
 
+f_ = []
 for i in range(num_eigenvalues):
     lambda_i = eps.getEigenvalue(i)
     freq_3D = np.sqrt(lambda_i)/2./np.pi
-    print(f"Eigenfreq {i}: {freq_3D}")
+    #print(f"Eigenfreq {i}: {freq_3D}")
+    f_.append(freq_3D)
+
+
+# Identify the index of the first mode
+index_ = []
+for i, value in enumerate(f_):
+    if value > 1.0:
+        index_.append(i)
+    
+start_mode = index_[0]
+
+for i in range(start_mode, num_eigenvalues):
+    lambda_i = eps.getEigenvalue(i)
+    freq_3D = np.sqrt(lambda_i)/2./np.pi
+    print(f"Eigenfreq {i-start_mode+1}: {freq_3D}")
 
 # eps.view()
 # eps.errorView()

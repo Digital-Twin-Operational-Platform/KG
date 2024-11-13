@@ -1,0 +1,15 @@
+from transformers import AutoModelForCausalLM, AutoTokenizer
+
+# Load the model and tokenizer
+model_name = "meta-llama/Llama3.2-1B-Instruct"  # Replace this with the actual Llama3 model name when available
+tokenizer = AutoTokenizer.from_pretrained(model_name)
+model = AutoModelForCausalLM.from_pretrained(model_name)
+
+# Example input
+inputs = tokenizer("What is Llama3?", return_tensors="pt")
+
+# Generate response
+outputs = model.generate(inputs.input_ids, max_length=50)
+
+# Decode and print the output
+print(tokenizer.decode(outputs[0], skip_special_tokens=True))

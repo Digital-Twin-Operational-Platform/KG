@@ -10,11 +10,11 @@ from .routes import module1
 # X Shen added
 from .library import buildgraph
 from .library.ODE import three_dof
-from .library.Geometrical import three_floor_blender
+#from .library.Geometrical import three_floor_blender   # currently commented
 from .library.Gmsh import three_floor_gmsh
 from .library.Gmsh2XDMF import Gmsh2XDMF
 from .library.UQ import three_floor_Bayesian
-
+from . import reasoning
 
 import numpy as np
 import time
@@ -33,6 +33,7 @@ def page_not_found(error):
 
 # Initialise the knowledge graph
 kg_ = buildgraph.knowledgeGraph()
+
 
 #################################################
 # Run the agent "ODE" to generate reponse
@@ -61,18 +62,18 @@ for i in range(0, 5):
         parameters_Geometric.append(directions_[j] + components_[i])
 
 
-geometric_input = three_floor_blender.Blender_input(parameters_Geometric)
+#geometric_input = three_floor_blender.Blender_input(parameters_Geometric)  # currently commented
 
 print('\n' * 5)
 print("Received geometric parameters, run the Blender agent..")
 time.sleep(5)
 
-three_floor_blender.Blender_output(geometric_input)
+#three_floor_blender.Blender_output(geometric_input)    #  # currently commented
 
 print('\n' * 5)
 print("Blender agent task finished.")
 
-print(parameters_Geometric, geometric_input)
+#print(parameters_Geometric, geometric_input)
 kg_.Geometric()
 ################################################
 # Gmsh
@@ -111,7 +112,29 @@ print("Gmsh2XDMF agent task finished.")
 # Bayesian inference
 print('\n' * 5)
 print("Run the Bayesian agent..")
-three_floor_Bayesian.Bayesian_output()
+#three_floor_Bayesian.Bayesian_output()    # currently commented for testing
+
+print('\n' * 5)
+print("Wait for the initialisation..")
+time.sleep(30)
+
+def conditional_function():
+    #print("test_1")
+    #user_input = input("Please enter 'yes' to run the query or 'no' to stop: ")
+    user_input = "yes"  #user_input.strip().lower()
+    #print("test_2")
+    if user_input == "yes":
+        print("Query is running...")
+        # Place the code you want to run here
+        reasoning.run()
+    elif user_input == "no":
+        print("Query has been stopped.")
+    else:
+        print("Invalid input. Please enter 'yes' or 'no'.")
+
+# Run the function
+#print("test")
+conditional_function()
 
 ################################################
 
