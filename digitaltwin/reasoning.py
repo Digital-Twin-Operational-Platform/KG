@@ -8,7 +8,7 @@ import time
     
 def run():
     print("Input your OpenAI api key from the main filefolder KG/openai_key.txt: \n ")
-    with open('openai_key.txt', 'r') as file:
+    with open('openai.txt', 'r') as file:
         lines = file.read()
         lines = lines.strip().strip('"')
         os.environ["OPENAI_API_KEY"] = lines   # file.read()
