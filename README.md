@@ -30,5 +30,7 @@ docker compose up
 Username: neo4j
 Password: 12345678
 
+![Graph Visualization](./graph.svg)
+
 
 
