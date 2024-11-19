@@ -10,7 +10,7 @@ from .routes import module1
 # X Shen added
 from .library import buildgraph
 from .library.ODE import three_dof
-from .library.Geometrical import three_floor_blender   
+#from .library.Geometrical import three_floor_blender   
 from .library.Gmsh import three_floor_gmsh
 from .library.Gmsh2XDMF import Gmsh2XDMF
 from .library.UQ import three_floor_Bayesian
@@ -62,19 +62,19 @@ for i in range(0, 5):
         parameters_Geometric.append(directions_[j] + components_[i])
 
 
-geometric_input = three_floor_blender.Blender_input(parameters_Geometric)  # currently commented
+#geometric_input = three_floor_blender.Blender_input(parameters_Geometric)  # currently commented
 
 print('\n' * 5)
 print("Received geometric parameters, run the Blender agent..")
 time.sleep(5)
 
-three_floor_blender.Blender_output(geometric_input)    #  # currently commented
+#three_floor_blender.Blender_output(geometric_input)    #  # currently commented
 
 print('\n' * 5)
 print("Blender agent task finished.")
 
-print(parameters_Geometric, geometric_input)
-kg_.Geometric()
+#print(parameters_Geometric, geometric_input)
+#kg_.Geometric()
 ################################################
 # Gmsh
 
@@ -87,13 +87,13 @@ print("Received meshing parameters, run the Gmsh agent..")
 time.sleep(5)
 
 
-three_floor_gmsh.Gmsh_output(Gmsh_input_)
+#three_floor_gmsh.Gmsh_output(Gmsh_input_)
 
 print('\n' * 5)
 print("Gmsh agent task finished.")
 time.sleep(5)
 
-kg_.Gmsh_()
+#kg_.Gmsh_()
 
 
 ################################################
@@ -103,7 +103,7 @@ print("Run the Gmsh_to_XDMF agent..")
 time.sleep(5)
 
 Gmsh2XDMF.Gmsh2XDMF()
-kg_.Gmsh2XDMF()
+#kg_.Gmsh2XDMF()
 
 print('\n' * 5)
 print("Gmsh2XDMF agent task finished.")
