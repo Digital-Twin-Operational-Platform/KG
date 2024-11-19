@@ -1,5 +1,5 @@
 # Base image
-FROM python:3.10
+FROM --platform=linux/amd64 python:3.10-slim
 
 # Set working directory
 WORKDIR /digitaltwin
@@ -21,6 +21,12 @@ RUN apt-get update && \
     libglu1-mesa \
     libxinerama1 \
     libxxf86vm1 \
+    libxft-dev \
+    libsm6 \
+    libice6 \
+    libx11-dev \
+    libxext6 \
+    libxrender1 \
     blender && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*

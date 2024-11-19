@@ -8,12 +8,13 @@ import time
     
 def run():
     file_path = os.path.join(os.path.dirname(__file__), 'openai.txt')
-    print("Input your OpenAI api key from the main filefolder KG/openai_key.txt: \n ")
+    print(file_path)
+    print("Input your OpenAI api key from the main filefolder KG/digitaltwin/openai.txt: \n ")
     with open(file_path, 'r') as file:
         lines = file.read()
         lines = lines.strip().strip('"')
         os.environ["OPENAI_API_KEY"] = lines   # file.read()
-    print(os.environ["OPENAI_API_KEY"])
+    print("Key", os.environ["OPENAI_API_KEY"])
     graph = Neo4jGraph(url="bolt://neo4j:7687", username="neo4j", password="12345678")  # docker
     #graph = Neo4jGraph(url="bolt://127.0.0.1:7687", username="neo4j", password="12345678")  # standalone
     chain = GraphCypherQAChain.from_llm(ChatOpenAI(temperature=0), graph=graph, verbose=True, allow_dangerous_requests=True)

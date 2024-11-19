@@ -34,5 +34,55 @@ Password: 12345678
 
 ![Graph Visualization](./graph.svg)
 
+![Demo of the project](./graph_animation.gif)
+
+- Query results
 
 
+Ask a question about the three-story floor structure (or type 'exit' to quit):
+
+1) How many agents in this graph?
+
+> Entering new GraphCypherQAChain chain...
+Generated Cypher:
+MATCH (a:agent)
+RETURN COUNT(a) as num_agents;
+Full Context:
+[{'num_agents': 7}]
+
+> Finished chain.
+Response: There are 7 agents in this graph.
+
+Ask a question about the three-story floor structure (or type 'exit' to quit):
+
+2) Show me all the agents with their names
+
+> Entering new GraphCypherQAChain chain...
+Generated Cypher:
+MATCH (a:agent)
+RETURN a.agent_name;
+Full Context:
+[{'a.agent_name': 'ODE_MassSpringDamper'}, {'a.agent_name': 'Geometric'}, {'a.agent_name': 'Meshing'}, {'a.agent_name': 'FEM'}, {'a.agent_name': 'ModalAnalysis'}, {'a.agent_name': 'SteadyState'}, {'a.agent_name': 'Bayesian_UQ'}]
+
+> Finished chain.
+Response: ODE_MassSpringDamper, Geometric, Meshing, FEM, ModalAnalysis, SteadyState, Bayesian_UQ
+
+
+Ask a question about the three-story floor structure (or type 'exit' to quit):
+
+3) Show me the parameters of material al6082, and show their values and units
+
+> Entering new GraphCypherQAChain chain...
+Generated Cypher:
+MATCH (m:material {material_name: 'al6082'})-[:has_parameter]->(p:parameter)
+MATCH (p)-[:has_value]->(v:parameter_value)
+MATCH (p)-[:has_unit]->(u:parameter_unit)
+RETURN p.parameter_name, v.parameter_value, u.parameter_unit
+Full Context:
+[{'p.parameter_name': 'possionsratio', 'v.parameter_value': '0.3', 'u.parameter_unit': '-'}, {'p.parameter_name': 'youngsmodulus', 'v.parameter_value': '70e9', 'u.parameter_unit': 'N/m2'}, {'p.parameter_name': 'density', 'v.parameter_value': '2700', 'u.parameter_unit': 'kg/m3'}]
+
+> Finished chain.
+Response: The parameters of material al6082 are as follows:
+- Poisson's Ratio: 0.3 (-)
+- Young's Modulus: 70e9 N/m2
+- Density: 2700 kg/m3
