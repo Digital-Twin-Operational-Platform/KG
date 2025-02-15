@@ -1,6 +1,7 @@
 # Knowledge Graphs for digital twins of structural dynamic systems
 
 Release of Multi-agent Digital Twin
+[Watch the video](https://github.com/Digital-Twin-Operational-Platform/KG/blob/main/DT_demo_v0.mp4)
 <video width="600" controls>
   <source src="https://www.youtube.com/watch?v=8Wpw60e8mMI&ab_channel=XiaoxueShen" type="video/mp4">
 </video>
