@@ -1,3 +1,7 @@
+# Release of Multi-agent Digital Twin
+<video width="600" controls>
+  <source src="https://youtu.be/8Wpw60e8mMI" type="video/mp4">
+
 # Knowledge Graphs for digital twins of structural dynamic systems
 A knowledge graph powered digital twin of structural dynamic systems. This consists of several components: mathmatical modelling (ODE), geometric modelling (python scripts for Blender), meshing (Gmsh), Finite Element Analysis (FEniCSx), and Bayesian inference of model parameters. The knowledge graph is built using Neo4j. These serve as "agents" and are containerised in Docker.
 
