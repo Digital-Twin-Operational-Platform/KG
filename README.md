@@ -2,7 +2,7 @@
 
 First release of Multi-agent Digital Twin - Feb 2025
 
-![Description](./Multi-agent Digital Twin.png)
+![Description](./Multi_agent_Digital_Twin.png)
 
 Watch the video: <https://www.youtube.com/watch?v=8Wpw60e8mMI>
 
