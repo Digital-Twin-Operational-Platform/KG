@@ -33,6 +33,13 @@ sudo chmod 777 /var/run/docker.sock
 docker compose build
 docker compose up
 ```
+- or 
+```bash
+docker compose up --build
+```
+
+- For using a local LLM: place the *.gguf file into the ollama folder and modify the "Modelfile" script to point towards the .gguf file.
+
 - For testing the query functionality, put your OpenAI key to the file at digitaltwin/openai.txt (currently it is empty). You can find your OpenAI API key at https://platform.openai.com/api-keys
 
 - Then, in a web browser, go to http://localhost:7475/ (NOT 7474) to access the knowledge graph. Choose the Connect URL "neo4j://" and change "localhost:7687" to "localhost:7688".

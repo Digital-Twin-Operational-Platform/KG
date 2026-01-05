@@ -1,0 +1,1 @@
+FROM ./gemma-3-1b-it-q4_0.gguf
